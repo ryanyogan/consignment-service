@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	micro "github.com/micro/go-micro"
+	"github.com/micro/go-micro"
 	pb "github.com/ryanyogan/consignment-service/proto/consignment"
 )
 
@@ -68,6 +68,8 @@ func main() {
 	)
 
 	srv.Init()
+
+	pb.RegisterShippingServiceHandler(srv.Server(), &service{repo})
 
 	if err := srv.Run(); err != nil {
 		fmt.Println(err)
