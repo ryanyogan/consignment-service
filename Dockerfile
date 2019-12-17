@@ -8,7 +8,7 @@ COPY . .
 
 RUN go mod download
 
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o transport-service-consignment
+RUN CGO_ENABLED=0 GOOS=linux go build -o transport-service-consignment -a -installsuffix cgo main.go repository.go handler.go datastore.go
 
 FROM alpine:latest
 
