@@ -5,4 +5,6 @@ build:
 	docker build -t transport-service-consignment .
 
 run:
-	docker run -d -p  50051:50051 transport-service-consignment
+	docker run -p  50051:50051 \
+		-e MICRO_SERVER_ADDRESS=:50051 \
+		transport-service-consignment
